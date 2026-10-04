@@ -1,1 +1,21 @@
-
+name: Unzip project
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  unzip:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract project
+        run: |
+          unzip -o wassilha-project.zip
+          rm wassilha-project.zip
+      - name: Commit
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add -A
+          git commit -m "Add WASSILHA project"
+          git push
