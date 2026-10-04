@@ -1,0 +1,175 @@
+{
+  "project_name": "WASSILHA",
+  "developer": "Nidal Watfa",
+  "archetype": "Organic Precision Commercial (Swiss Precision meets Warm Emerald & Amber Warmth)",
+  "app_type": "Hybrid Fullstack Business SaaS Platform (Mobile-First, Bilingual RTL/LTR, Light/Dark/System)",
+  "language_support": {
+    "arabic": {
+      "code": "ar",
+      "direction": "rtl",
+      "name": "العربية",
+      "typography": {
+        "heading_font": "'Alexandria', 'Tajawal', sans-serif",
+        "body_font": "'IBM Plex Sans Arabic', 'Tajawal', sans-serif",
+        "line_height_body": "1.7",
+        "line_height_heading": "1.3",
+        "letter_spacing": "0px (CRITICAL: Do not apply letter-spacing to Arabic text as it breaks cursive script joining)"
+      }
+    },
+    "english": {
+      "code": "en",
+      "direction": "ltr",
+      "name": "English",
+      "typography": {
+        "heading_font": "'Outfit', 'Plus Jakarta Sans', sans-serif",
+        "body_font": "'Plus Jakarta Sans', sans-serif",
+        "mono_font": "'JetBrains Mono', monospace",
+        "line_height_body": "1.6",
+        "line_height_heading": "1.2",
+        "letter_spacing_heading": "-0.025em"
+      }
+    }
+  },
+  "fonts_to_import": [
+    "https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+  ],
+  "color_palette": {
+    "light_mode": {
+      "background": "#F8FAFC",
+      "surface": "#FFFFFF",
+      "surface_elevated": "#F1F5F9",
+      "border": "#E2E8F0",
+      "border_strong": "#CBD5E1",
+      "text_primary": "#0F172A",
+      "text_secondary": "#475569",
+      "text_muted": "#64748B",
+      "primary": "#0D9488",
+      "primary_hover": "#0F766E",
+      "primary_foreground": "#FFFFFF",
+      "secondary": "#F1F5F9",
+      "secondary_foreground": "#0F172A",
+      "accent": "#F59E0B",
+      "accent_foreground": "#0F172A",
+      "success": "#10B981",
+      "success_surface": "#ECFDF5",
+      "warning": "#F59E0B",
+      "warning_surface": "#FFFBEB",
+      "danger": "#EF4444",
+      "danger_surface": "#FEF2F2",
+      "info": "#3B82F6",
+      "info_surface": "#EFF6FF",
+      "ring": "#0D9488"
+    },
+    "dark_mode": {
+      "background": "#090D16",
+      "surface": "#111827",
+      "surface_elevated": "#1F2937",
+      "border": "#1F2937",
+      "border_strong": "#374151",
+      "text_primary": "#F9FAFB",
+      "text_secondary": "#9CA3AF",
+      "text_muted": "#6B7280",
+      "primary": "#14B8A6",
+      "primary_hover": "#2DD4BF",
+      "primary_foreground": "#090D16",
+      "secondary": "#1E293B",
+      "secondary_foreground": "#F9FAFB",
+      "accent": "#F59E0B",
+      "accent_foreground": "#090D16",
+      "success": "#34D399",
+      "success_surface": "#064E3B",
+      "warning": "#FBBF24",
+      "warning_surface": "#78350F",
+      "danger": "#F87171",
+      "danger_surface": "#7F1D1D",
+      "info": "#60A5FA",
+      "info_surface": "#1E3A8A",
+      "ring": "#14B8A6"
+    }
+  },
+  "forbidden_styles": [
+    "FORBIDDEN: Standard generic Inter or Arial for main headings",
+    "FORBIDDEN: Pure pitch black #000000 backgrounds (use tinted deep charcoal/navy slate #090D16)",
+    "FORBIDDEN: Over-saturated purple/pink AI-slop gradients",
+    "FORBIDDEN: Letter-spacing on Arabic headings/body (breaks script joining)",
+    "FORBIDDEN: Centered body text in paragraphs or data cards",
+    "FORBIDDEN: Full transparent backgrounds on sticky headers or mobile bottom nav (must use backdrop-blur + semi-opaque bg)",
+    "FORBIDDEN: Raw native browser date/select inputs (use Shadcn custom primitives adjusted for RTL/LTR)"
+  ],
+  "layout_and_navigation": {
+    "mobile": {
+      "bottom_navigation": {
+        "height": "h-16",
+        "fixed": true,
+        "blur": "backdrop-blur-xl bg-surface/90 border-t border-border z-40",
+        "items": ["Dashboard", "Orders", "Invoices", "Customers", "More (Sheet)"],
+        "touch_target_min": "48px x 48px"
+      },
+      "quick_actions_bar": "Horizontally scrollable pill buttons with icons for rapid creation (+ Invoice, + Quote, + Customer, + Payment)"
+    },
+    "desktop": {
+      "sidebar": "Collapsible dynamic sidebar with full RTL support (mirrored icons and end-aligned chevron indicators)",
+      "header": "Sticky glassmorphic top app header with search bar, notification center, currency indicator, theme toggle, and language selector"
+    }
+  },
+  "components_specifications": {
+    "dashboard": {
+      "welcome_hero": "Warm, personalized hero card with quick metrics summary, active currency indicator, and greeting",
+      "kpi_cards": "Bento grid structure with trend indicators (+%), sparkline visual, and direct links to filtered views",
+      "recent_activity_feed": "Dense timeline stream with status dots and humanized timestamp labels"
+    },
+    "invoices_and_quotes": {
+      "status_badges": {
+        "draft": "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300",
+        "sent": "bg-blue-100 text-blue-700 dark:bg-blue-950 dark:text-blue-300",
+        "partially_paid": "bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-300",
+        "paid": "bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300",
+        "overdue": "bg-rose-100 text-rose-700 dark:bg-rose-950 dark:text-rose-300"
+      },
+      "print_mode": "Dedicated printable view styled specifically with `@media print` rules: hides sidebars/navs, uses clean black/white high-density table format with business header & QR code stamp"
+    },
+    "ai_assistant": {
+      "name": "WASSILHA Smart Business AI",
+      "style": "Expandable bottom-right composer drawer / modal with pre-built prompt chips ('Summarize pending payments', 'Generate sales report for this month', 'Draft overdue payment message')",
+      "tone": "Professional, insightful, encouraging commercial assistant"
+    },
+    "scientific_calculator": {
+      "type": "Floating modal / side-sheet utility",
+      "features": ["Standard & scientific operations", "Tax/VAT % quick calculation buttons", "Discount % calculation buttons", "History memory stream"]
+    },
+    "interactive_map": {
+      "library": "Leaflet / OpenStreetMap",
+      "theme": "Custom tile layer matching active theme (dark/light) with custom marker icons for customers and store locations"
+    }
+  },
+  "testing_and_accessibility": {
+    "data_testid_convention": "kebab-case, role-based identifiers on ALL buttons, inputs, tabs, metrics, and modals",
+    "examples": [
+      "data-testid=\"nav-dashboard-link\"",
+      "data-testid=\"create-invoice-button\"",
+      "data-testid=\"customer-search-input\"",
+      "data-testid=\"language-toggle-button\"",
+      "data-testid=\"theme-toggle-button\"",
+      "data-testid=\"ai-assistant-trigger-button\""
+    ]
+  },
+  "instructions_to_main_agent": [
+    "Maintain complete bilingual state sync between English and Arabic. When switching language, automatically set document direction to 'rtl' for Arabic and 'ltr' for English.",
+    "Use logical CSS utility classes or responsive direction helpers (e.g., flex-row-reverse where appropriate or logical padding/margin) to ensure seamless layout mirror in RTL.",
+    "Implement Sonner toast notifications for all user actions (Invoice created, Payment recorded, Customer added, Settings saved).",
+    "Ensure standard fallback state images and empty states (with illustrations and quick create action buttons) when no data exists.",
+    "Keep touch target heights at least 44px on mobile components."
+  ],
+  "image_urls": [
+    {
+      "category": "storefront_workspace",
+      "url": "https://images.unsplash.com/photo-1770992255795-95993012028b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzV8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBidXNpbmVzcyUyMG93bmVyJTIwc3RvcmUlMjB3b3Jrc3BhY2V8ZW58MHx8fHwxNzkwNDM1MzQ5fDA&ixlib=rb-4.1.0&q=85",
+      "description": "Clean interior of a boutique retail store for default business hero"
+    },
+    {
+      "category": "craft_workshop",
+      "url": "https://images.unsplash.com/photo-1781084533068-95692569d670?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzV8MHwxfHNlYXJjaHw0fHxtb2Rlcm4lMjBidXNpbmVzcyUyMG93bmVyJTIwc3RvcmUlMjB3b3Jrc3BhY2V8ZW58MHx8fHwxNzkwNDM1MzQ5fDA&ixlib=rb-4.1.0&q=85",
+      "description": "Craft studio desk setup for service/freelance business mode"
+    }
+  ]
+}

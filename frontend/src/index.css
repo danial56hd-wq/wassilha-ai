@@ -1,0 +1,135 @@
+@import 'leaflet/dist/leaflet.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --font-en-head: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    --font-en-body: 'Plus Jakarta Sans', sans-serif;
+    --font-ar-head: 'Alexandria', 'Tajawal', sans-serif;
+    --font-ar-body: 'IBM Plex Sans Arabic', 'Tajawal', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+}
+
+@layer base {
+    :root {
+        --background: 210 40% 98%;
+        --foreground: 222 47% 11%;
+        --card: 0 0% 100%;
+        --card-foreground: 222 47% 11%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 222 47% 11%;
+        --primary: 174 84% 32%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 210 40% 96%;
+        --secondary-foreground: 222 47% 11%;
+        --muted: 210 40% 96%;
+        --muted-foreground: 215 16% 47%;
+        --accent: 38 92% 50%;
+        --accent-foreground: 222 47% 11%;
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 214 32% 91%;
+        --input: 214 32% 91%;
+        --ring: 174 84% 32%;
+        --chart-1: 174 84% 32%;
+        --chart-2: 38 92% 50%;
+        --chart-3: 217 91% 60%;
+        --chart-4: 160 84% 39%;
+        --chart-5: 350 89% 60%;
+        --radius: 0.75rem;
+    }
+    .dark {
+        --background: 222 45% 6%;
+        --foreground: 210 20% 98%;
+        --card: 222 39% 11%;
+        --card-foreground: 210 20% 98%;
+        --popover: 222 39% 11%;
+        --popover-foreground: 210 20% 98%;
+        --primary: 172 76% 40%;
+        --primary-foreground: 222 45% 6%;
+        --secondary: 217 33% 17%;
+        --secondary-foreground: 210 20% 98%;
+        --muted: 217 33% 17%;
+        --muted-foreground: 218 11% 65%;
+        --accent: 38 92% 50%;
+        --accent-foreground: 222 45% 6%;
+        --destructive: 0 74% 58%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 215 28% 17%;
+        --input: 215 28% 20%;
+        --ring: 172 76% 40%;
+        --chart-1: 172 76% 45%;
+        --chart-2: 38 92% 55%;
+        --chart-3: 217 91% 65%;
+        --chart-4: 160 84% 45%;
+        --chart-5: 350 89% 66%;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    html {
+        -webkit-tap-highlight-color: transparent;
+    }
+    body {
+        @apply bg-background text-foreground;
+        margin: 0;
+        background-image: radial-gradient(circle at 15% 10%, hsl(var(--primary) / 0.055), transparent 30%), radial-gradient(circle at 90% 20%, hsl(var(--accent) / 0.045), transparent 28%);
+        font-family: var(--font-en-body);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+    }
+    h1, h2, h3, h4, .head-font {
+        font-family: var(--font-en-head);
+        letter-spacing: -0.02em;
+    }
+    [dir="rtl"] body,
+    html[lang="ar"] body {
+        font-family: var(--font-ar-body);
+    }
+    [dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3, [dir="rtl"] h4, [dir="rtl"] .head-font {
+        font-family: var(--font-ar-head);
+        letter-spacing: 0;
+    }
+    .font-mono, .tabular {
+        font-family: var(--font-mono);
+        font-feature-settings: 'tnum';
+    }
+}
+
+@layer utilities {
+    .glass {
+        @apply bg-card/80 backdrop-blur-xl;
+        box-shadow: 0 10px 35px hsl(var(--foreground) / 0.035);
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .animate-in-up { animation: inUp 0.45s cubic-bezier(0.16,1,0.3,1) both; }
+    .logo-shimmer-wrap { position: relative; display: inline-flex; overflow: hidden; filter: drop-shadow(0 4px 14px hsl(var(--accent) / 0.18)); }
+    .logo-shimmer-wrap::after { content: ""; position: absolute; inset: -35% -60%; background: linear-gradient(110deg, transparent 42%, hsl(var(--accent) / 0.75) 50%, transparent 58%); transform: translateX(-70%) rotate(8deg); animation: logoShimmer 4.8s ease-in-out infinite; pointer-events: none; }
+    @keyframes logoShimmer { 0%, 62% { transform: translateX(-70%) rotate(8deg); opacity: 0; } 68% { opacity: 1; } 82%, 100% { transform: translateX(70%) rotate(8deg); opacity: 0; } }
+    @keyframes inUp {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+}
+
+::selection { background: hsl(var(--primary) / 0.2); }
+
+/* Leaflet marker fix in bundlers */
+.leaflet-container { z-index: 0; font-family: inherit; }
+
+/* Print: only the .print-area is shown */
+@media print {
+    body * { visibility: hidden !important; }
+    .print-area, .print-area * { visibility: visible !important; }
+    .print-area {
+        position: absolute; inset: 0; width: 100%;
+        padding: 0; margin: 0; background: #fff; color: #000;
+    }
+    .no-print { display: none !important; }
+}
